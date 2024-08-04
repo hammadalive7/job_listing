@@ -18,12 +18,27 @@ class JobCard extends StatelessWidget {
       children: [
         Padding(
           padding: const EdgeInsets.only(top: 50, left: 8),
-          child: Card(
-            color: Colors.white,
-            elevation: 8.0,
-            shadowColor: const Color(0xff5ca5a4).withOpacity(0.1),
-            shape: RoundedRectangleBorder(
+          child: Container(
+            decoration: BoxDecoration(
+              boxShadow: [
+                BoxShadow(
+                  color: const Color(0xff5ca5a4).withOpacity(0.1),
+                  spreadRadius: 5,
+                  blurRadius: 7,
+                  offset: const Offset(0, 3), // changes position of shadow
+                ),
+              ],
+              color: Colors.white,
               borderRadius: BorderRadius.circular(8.0),
+              border: Border(
+                left: BorderSide(
+                  style: BorderStyle.solid,
+                  color: job.isFeatured
+                      ? const Color(0xff5ca5a4)
+                      : Colors.white, // Blue color
+                  width: 3.0, // Thickness
+                ),
+              ),
             ),
             child: Padding(
               padding: const EdgeInsets.all(30.0),
