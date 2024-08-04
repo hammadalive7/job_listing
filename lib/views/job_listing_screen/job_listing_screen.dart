@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_listing/data/listing_data.dart';
 import 'package:flutter_listing/model/listing_model.dart';
@@ -66,62 +67,20 @@ class _HomeScreenState extends State<HomeScreen> {
                   children: [
                     CustomHeader(isMobile: isMobile),
                     if (selectedFilters.isNotEmpty)
-                      Align(
-                        alignment: Alignment.bottomCenter,
-                        child: Padding(
-                          padding: const EdgeInsets.all(20.0),
-                          child: Container(
-                            width: double.infinity,
-                            height: 150,
-                            margin: EdgeInsets.only(top: isMobile ? 100 : 200),
-                            padding: const EdgeInsets.all(16),
-                            decoration: BoxDecoration(
-                              color: Colors.white,
-                              borderRadius: BorderRadius.circular(8),
-                              boxShadow: [
-                                BoxShadow(
-                                  color:
-                                      const Color(0xff5ca5a4).withOpacity(0.1),
-                                  spreadRadius: 5,
-                                  blurRadius: 7,
-                                  offset: const Offset(0, 3),
-                                ),
-                              ],
-                            ),
-                            child: Row(
-                              children: [
-                                Expanded(
-                                  flex: 2,
-                                  child: FilterSection(
-                                    selectedFilters: selectedFilters,
-                                    onRemoveFilter: removeFilter,
-                                  ),
-                                ),
-                                Expanded(
-                                  flex: 1,
-                                  child: TextButton(
-                                    style: const ButtonStyle(
-                                      splashFactory: NoSplash.splashFactory,
-                                    ),
-                                    onPressed: clearFilters,
-                                    child: const Text(
-                                      'Clear',
-                                      style: TextStyle(
-                                          color: Colors.grey,
-                                          fontSize: 15,
-                                          fontWeight: FontWeight.bold),
-                                    ),
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
-                        ),
+                      FilterSection(
+                        selectedFilters: selectedFilters,
+                        onRemoveFilter: removeFilter,
+                        onClearFilters: clearFilters,
+                        isMobile: isMobile,
+                        constraints: constraints,
                       ),
                   ],
                 ),
                 Padding(
-                  padding: const EdgeInsets.all(20.0),
+                  padding: constraints.maxWidth > 800
+                      ? const EdgeInsets.only(
+                          left: 140.0, right: 140.0, top: 15.0, bottom: 15.0)
+                      : const EdgeInsets.all(20.0),
                   child: Column(
                     children: filteredJobs
                         .map(
