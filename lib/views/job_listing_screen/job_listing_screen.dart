@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_listing/data/listing_data.dart';
 import 'package:flutter_listing/model/listing_model.dart';
-
 import 'components/custom_header.dart';
 import 'components/job_card.dart';
 import 'components/job_filter.dart';
 
 class HomeScreen extends StatefulWidget {
+  const HomeScreen({super.key});
+
   @override
   _HomeScreenState createState() => _HomeScreenState();
 }
@@ -77,12 +78,13 @@ class _HomeScreenState extends State<HomeScreen> {
                             decoration: BoxDecoration(
                               color: Colors.white,
                               borderRadius: BorderRadius.circular(8),
-                              boxShadow: const [
+                              boxShadow: [
                                 BoxShadow(
-                                  color: Colors.black26,
-                                  blurRadius: 10,
-                                  spreadRadius: 1,
-                                  offset: Offset(0, 2),
+                                  color:
+                                      const Color(0xff5ca5a4).withOpacity(0.1),
+                                  spreadRadius: 5,
+                                  blurRadius: 7,
+                                  offset: const Offset(0, 3),
                                 ),
                               ],
                             ),
@@ -98,8 +100,17 @@ class _HomeScreenState extends State<HomeScreen> {
                                 Expanded(
                                   flex: 1,
                                   child: TextButton(
+                                    style: const ButtonStyle(
+                                      splashFactory: NoSplash.splashFactory,
+                                    ),
                                     onPressed: clearFilters,
-                                    child: const Text('Clear'),
+                                    child: const Text(
+                                      'Clear',
+                                      style: TextStyle(
+                                          color: Colors.grey,
+                                          fontSize: 15,
+                                          fontWeight: FontWeight.bold),
+                                    ),
                                   ),
                                 ),
                               ],
