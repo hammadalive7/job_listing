@@ -51,6 +51,7 @@ class _JobCardChipsState extends State<JobCardChips> {
             label: Text(
               label,
               style: TextStyle(
+                fontWeight:  FontWeight.bold,
                 color: provider.isHovering(uniqueKey)
                     ? Colors.white
                     : primaryColor,

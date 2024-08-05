@@ -28,10 +28,9 @@ class FilterSection extends StatelessWidget {
       alignment: Alignment.bottomCenter,
       child: Padding(
         padding:
-            EdgeInsets.symmetric(horizontal: horizontalPadding, vertical: 15.0),
+            EdgeInsets.symmetric(horizontal: horizontalPadding),
         child: Container(
           width: double.infinity,
-          height: 150,
           margin: EdgeInsets.only(top: isMobile ? 100 : 200),
           padding: const EdgeInsets.all(16),
           decoration: BoxDecoration(
@@ -54,7 +53,7 @@ class FilterSection extends StatelessWidget {
                 child: Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 16.0),
                   child: Wrap(
-                    spacing: 8.0,
+                    spacing: 15.0,
                     runSpacing: 8.0,
                     children: selectedFilters.map((filter) {
                       return CustomFilterChip(

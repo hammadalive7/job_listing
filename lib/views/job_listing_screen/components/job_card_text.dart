@@ -24,7 +24,7 @@ class JobCardText extends StatelessWidget {
                 job.company,
                 style: const TextStyle(
                   color: primaryColor,
-                  fontSize: 16.0,
+                  fontSize: 18.0,
                   fontWeight: FontWeight.bold,
                 ),
               ),
@@ -32,19 +32,21 @@ class JobCardText extends StatelessWidget {
             if (job.isNew)
               Padding(
                 padding: const EdgeInsets.only(top: 8.0, right: 10.0),
-                child: Container(
-                  padding: const EdgeInsets.symmetric(
-                      horizontal: 8.0, vertical: 4.0),
-                  decoration: BoxDecoration(
-                    color: primaryColor,
-                    borderRadius: BorderRadius.circular(12.0),
-                  ),
-                  child: const Text(
-                    newJob,
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 12.0,
-                      fontWeight: FontWeight.bold,
+                child: Center(
+                  // Add Center widget
+                  child: Container(
+                    padding: const EdgeInsets.fromLTRB(8, 6, 8, 4),
+                    decoration: BoxDecoration(
+                      color: primaryColor,
+                      borderRadius: BorderRadius.circular(12.0),
+                    ),
+                    child: const Text(
+                      newJob,
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 12.0,
+                        fontWeight: FontWeight.bold,
+                      ),
                     ),
                   ),
                 ),
@@ -52,19 +54,22 @@ class JobCardText extends StatelessWidget {
             if (job.isFeatured)
               Padding(
                 padding: const EdgeInsets.only(top: 8.0, right: 10.0),
-                child: Container(
-                  padding: const EdgeInsets.symmetric(
-                      horizontal: 8.0, vertical: 4.0),
-                  decoration: BoxDecoration(
-                    color: featuredColor,
-                    borderRadius: BorderRadius.circular(12.0),
-                  ),
-                  child: const Text(
-                    featuredJob,
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 12.0,
-                      fontWeight: FontWeight.bold,
+                child: Center(
+                  // Add Center widget
+                  child: Container(
+                    padding: const EdgeInsets.fromLTRB(8, 6, 8, 4),
+
+                    decoration: BoxDecoration(
+                      color: featuredColor,
+                      borderRadius: BorderRadius.circular(12.0),
+                    ),
+                    child: const Text(
+                      featuredJob,
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 12.0,
+                        fontWeight: FontWeight.bold,
+                      ),
                     ),
                   ),
                 ),

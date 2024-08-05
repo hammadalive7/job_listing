@@ -44,6 +44,7 @@ class CustomFilterChip extends StatelessWidget {
                 child: Text(
                   label,
                   style: const TextStyle(
+                    fontWeight: FontWeight.bold,
                     color: primaryColor,
                   ),
                 ),
@@ -57,14 +58,14 @@ class CustomFilterChip extends StatelessWidget {
                   child: Container(
                     padding: const EdgeInsets.all(8.0),
                     decoration: BoxDecoration(
-                      color: isHovering ? Colors.black : secondaryColor,
+                      color: isHovering ? Colors.black : primaryColor,
                       borderRadius: const BorderRadius.horizontal(
                         right: Radius.circular(5.0),
                       ),
                     ),
                     child: SvgPicture.asset(
                       'assets/images/icon-remove.svg',
-                      color: isHovering ? Colors.white : primaryColor,
+                      color: Colors.white,
                       width: 15.0,
                       height: 15.0,
                     ),
