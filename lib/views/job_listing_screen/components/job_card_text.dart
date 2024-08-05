@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_listing/constants/colors.dart';
+import 'package:flutter_listing/constants/strings.dart';
 import 'package:flutter_listing/model/listing_model.dart';
 
 class JobCardText extends StatelessWidget {
@@ -12,50 +14,79 @@ class JobCardText extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Row(
+          crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             Padding(
               padding: const EdgeInsets.only(right: 8.0, top: 8.0),
-              child: Text(job.company,
-                  style: const TextStyle(
-                      color: Color(0xff5ca5a4),
-                      fontSize: 18.0,
-                      fontWeight: FontWeight.bold)),
+              child: Text(
+                job.company,
+                style: const TextStyle(
+                  color: primaryColor,
+                  fontSize: 18.0,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
             ),
             if (job.isNew)
-              const Padding(
-                padding: EdgeInsets.only(left: 8.0),
-                child: Chip(
-                  shape: RoundedRectangleBorder(
-                      side: BorderSide(color: Color(0xff5ca5a4)),
-                      borderRadius: BorderRadius.all(Radius.circular(20.0))),
-                  label: Text('NEW!', style: TextStyle(color: Colors.white)),
-                  backgroundColor: Color(0xff5ca5a4),
+              Padding(
+                padding: const EdgeInsets.only(left: 8.0, top: 8.0),
+                child: Container(
+                  padding: const EdgeInsets.symmetric(
+                      horizontal: 8.0, vertical: 4.0),
+                  decoration: BoxDecoration(
+                    color: primaryColor,
+                    borderRadius: BorderRadius.circular(20.0),
+                  ),
+                  child: const Text(
+                    newJob,
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 10.0,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
                 ),
               ),
             if (job.isFeatured)
-              const Padding(
-                padding: EdgeInsets.only(left: 8.0),
-                child: Chip(
-                  shape: RoundedRectangleBorder(
-                      side: BorderSide(color: Colors.black87),
-                      borderRadius: BorderRadius.all(Radius.circular(20.0))),
-                  label:
-                      Text('FEATURED', style: TextStyle(color: Colors.white)),
-                  backgroundColor: Colors.black87,
+              Padding(
+                padding: const EdgeInsets.only(left: 8.0, top: 8.0),
+                child: Container(
+                  padding: const EdgeInsets.symmetric(
+                      horizontal: 8.0, vertical: 4.0),
+                  decoration: BoxDecoration(
+                    color: Colors.black87,
+                    borderRadius: BorderRadius.circular(20.0),
+                  ),
+                  child: const Text(
+                    featuredJob,
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 10.0,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
                 ),
               ),
           ],
         ),
-        SizedBox(height: MediaQuery.sizeOf(context).height * 0.01),
-        Text(job.position,
-            style:
-                const TextStyle(fontSize: 20.0, fontWeight: FontWeight.bold)),
-        SizedBox(height: MediaQuery.sizeOf(context).height * 0.01),
-        Text('${job.postedAt}  •  ${job.contract}  •  ${job.location}',
-            style: const TextStyle(
-                color: Colors.grey,
-                fontSize: 14.0,
-                fontWeight: FontWeight.bold)),
+        const SizedBox(height: 8.0),
+        Text(
+          job.position,
+          style: const TextStyle(
+            fontSize: 20.0,
+            fontWeight: FontWeight.bold,
+            color: Colors.black,
+          ),
+        ),
+        const SizedBox(height: 8.0),
+        Text(
+          '${job.postedAt} • ${job.contract} • ${job.location}',
+          style: const TextStyle(
+            color: Colors.grey,
+            fontSize: 14.0,
+            fontWeight: FontWeight.bold,
+          ),
+        ),
       ],
     );
   }
