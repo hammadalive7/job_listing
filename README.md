@@ -2,15 +2,11 @@
 
 A new Flutter project.
 
-## Getting Started
+Mobile App UI:
 
-This project is a starting point for a Flutter application.
+<img width="400" height="800" alt="Job Listing Desktp" src="https://github.com/user-attachments/assets/347c89db-95e0-488e-a266-b83896800b50">
 
-A few resources to get you started if this is your first Flutter project:
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+Desktop UI:
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+<img width="1440" alt="Job Listing Desktp" src="https://github.com/user-attachments/assets/7d2b431c-115f-4dc5-aa61-6bef4cc8c8c6">
