@@ -17,7 +17,7 @@ class JobCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final bool isWideScreen = MediaQuery.of(context).size.width > 800;
+    final bool isWideScreen = MediaQuery.sizeOf(context).width > 700;
 
     return Stack(
       children: [
@@ -27,7 +27,7 @@ class JobCard extends StatelessWidget {
             decoration: BoxDecoration(
               boxShadow: [
                 BoxShadow(
-                  color:  primaryColor.withOpacity(0.1),
+                  color: primaryColor.withOpacity(0.1),
                   spreadRadius: 5,
                   blurRadius: 7,
                   offset: const Offset(0, 3), // changes position of shadow
@@ -38,8 +38,7 @@ class JobCard extends StatelessWidget {
               border: Border(
                 left: BorderSide(
                   style: BorderStyle.solid,
-                  color:
-                      job.isFeatured ? primaryColor: Colors.white,
+                  color: job.isFeatured ? primaryColor : Colors.white,
                   width: 3.0,
                 ),
               ),
@@ -47,8 +46,8 @@ class JobCard extends StatelessWidget {
             child: Padding(
               padding: const EdgeInsets.all(30.0),
               child: isWideScreen
-                  ? buildWideLayout(context)
-                  : buildNarrowLayout(context),
+                  ? buildDesktopLayout(context)
+                  : buildMobileLayout(context),
             ),
           ),
         ),
@@ -68,7 +67,7 @@ class JobCard extends StatelessWidget {
     );
   }
 
-  Row buildWideLayout(BuildContext context) {
+  Row buildDesktopLayout(BuildContext context) {
     return Row(
       crossAxisAlignment: CrossAxisAlignment.center,
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -80,12 +79,17 @@ class JobCard extends StatelessWidget {
             JobCardText(job: job),
           ],
         ),
-        JobCardChips(job: job, onAddFilter: onAddFilter),
+        Expanded(
+          child: Align(
+            alignment: Alignment.centerRight,
+            child: JobCardChips(job: job, onAddFilter: onAddFilter),
+          ),
+        ),
       ],
     );
   }
 
-  Column buildNarrowLayout(BuildContext context) {
+  Column buildMobileLayout(BuildContext context) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [

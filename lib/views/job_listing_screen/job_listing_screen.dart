@@ -14,7 +14,7 @@ class JobListingScreen extends StatelessWidget {
     final jobProvider = Provider.of<JobProvider>(context);
     final bool isMobile = MediaQuery.of(context).size.width < 600;
     final double horizontalPadding =
-        MediaQuery.of(context).size.width > 800 ? 140.0 : 20.0;
+        MediaQuery.of(context).size.width > 1200 ? 140.0 : 20.0;
 
     return Scaffold(
       backgroundColor: secondaryColor,

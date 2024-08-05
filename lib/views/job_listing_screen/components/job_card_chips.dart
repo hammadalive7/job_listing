@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:flutter_listing/constants/colors.dart';
 import 'package:flutter_listing/model/listing_model.dart';
+import 'package:flutter_listing/providers/job_provider.dart';
 
 class JobCardChips extends StatefulWidget {
   final Jobs job;
@@ -17,50 +19,47 @@ class JobCardChips extends StatefulWidget {
 }
 
 class _JobCardChipsState extends State<JobCardChips> {
-  final Map<String, bool> _hovering = {};
-
   @override
   Widget build(BuildContext context) {
     return Wrap(
       spacing: 8.0,
       runSpacing: 8.0,
       children: [
-        ...widget.job.languages.map((lang) => _buildChip(lang)).toList(),
-        ...widget.job.tools.map((tool) => _buildChip(tool)).toList(),
+        ...widget.job.languages
+            .map((lang) => _buildChip(lang, '${widget.job.id}_lang_$lang')),
+        ...widget.job.tools
+            .map((tool) => _buildChip(tool, '${widget.job.id}_tool_$tool')),
       ],
     );
   }
 
-  Widget _buildChip(String label) {
-    return MouseRegion(
-      onEnter: (_) => _setHover(label, true),
-      onExit: (_) => _setHover(label, false),
-      child: ActionChip(
-        backgroundColor: _hovering[label] == true
-            ? primaryColor
-            : secondaryColor,
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(8.0),
-        ),
-        side: const BorderSide(
-          color: secondaryColor,
-        ),
-        label: Text(
-          label,
-          style: TextStyle(
-            color: _hovering[label] == true
-                ? Colors.white
-                : primaryColor,
+  Widget _buildChip(String label, String uniqueKey) {
+    return Consumer<JobProvider>(
+      builder: (context, provider, child) {
+        return MouseRegion(
+          onEnter: (_) => provider.setHover(uniqueKey, true),
+          onExit: (_) => provider.setHover(uniqueKey, false),
+          child: ActionChip(
+            backgroundColor:
+                provider.isHovering(uniqueKey) ? primaryColor : secondaryColor,
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(8.0),
+            ),
+            side: const BorderSide(
+              color: secondaryColor,
+            ),
+            label: Text(
+              label,
+              style: TextStyle(
+                color: provider.isHovering(uniqueKey)
+                    ? Colors.white
+                    : primaryColor,
+              ),
+            ),
+            onPressed: () => widget.onAddFilter(label),
           ),
-        ),
-        onPressed: () => widget.onAddFilter(label),
-      ),
+        );
+      },
     );
-  }
-
-  void _setHover(String label, bool isHovering) {
-    setState(() {
-      _hovering[label] = isHovering;
-    });
   }
 }

@@ -3,11 +3,25 @@ import 'package:flutter_listing/data/listing_data.dart';
 import 'package:flutter_listing/model/listing_model.dart';
 
 class JobProvider with ChangeNotifier {
-  final List<Jobs> _jobs = data.map((jobData) => Jobs.fromJson(jobData)).toList();
+  final List<Jobs> _jobs =
+      data.map((jobData) => Jobs.fromJson(jobData)).toList();
   final List<String> _selectedFilters = [];
+  final Map<String, bool> hovering = {};
 
   List<Jobs> get jobs => _jobs;
+
   List<String> get selectedFilters => _selectedFilters;
+
+  final Map<String, bool> _hovering = {};
+
+  bool isHovering(String label) {
+    return _hovering[label] ?? false;
+  }
+
+  void setHover(String label, bool hovering) {
+    _hovering[label] = hovering;
+    notifyListeners();
+  }
 
   void addFilter(String filter) {
     if (!_selectedFilters.contains(filter)) {

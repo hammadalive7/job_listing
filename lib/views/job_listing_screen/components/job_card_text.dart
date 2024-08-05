@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_listing/constants/colors.dart';
 import 'package:flutter_listing/constants/strings.dart';
 import 'package:flutter_listing/model/listing_model.dart';
+import 'package:flutter_listing/providers/job_provider.dart';
+import 'package:provider/provider.dart';
 
 class JobCardText extends StatelessWidget {
   final Jobs job;
@@ -70,14 +72,23 @@ class JobCardText extends StatelessWidget {
           ],
         ),
         const SizedBox(height: 8.0),
-        Text(
-          job.position,
-          style: const TextStyle(
-            fontSize: 20.0,
-            fontWeight: FontWeight.bold,
-            color: Colors.black,
-          ),
-        ),
+        Consumer<JobProvider>(builder: (context, provider, child) {
+          String uniqueKey = '${job.id}_${job.position}';
+          return MouseRegion(
+            onEnter: (_) => provider.setHover(uniqueKey, true),
+            onExit: (_) => provider.setHover(uniqueKey, false),
+            child: Text(
+              job.position,
+              style: TextStyle(
+                fontSize: 20.0,
+                fontWeight: FontWeight.bold,
+                color: provider.isHovering(uniqueKey) == true
+                    ? primaryColor
+                    : Colors.black,
+              ),
+            ),
+          );
+        }),
         const SizedBox(height: 8.0),
         Text(
           '${job.postedAt} • ${job.contract} • ${job.location}',
