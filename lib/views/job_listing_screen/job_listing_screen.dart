@@ -12,9 +12,9 @@ class JobListingScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final jobProvider = Provider.of<JobProvider>(context);
-    final bool isMobile = MediaQuery.of(context).size.width < 600;
+    final bool isMobile = MediaQuery.sizeOf(context).width < 600;
     final double horizontalPadding =
-        MediaQuery.of(context).size.width > 1200 ? 140.0 : 20.0;
+        MediaQuery.sizeOf(context).width > 1200 ? 140.0 : 20.0;
 
     return Scaffold(
       backgroundColor: secondaryColor,
@@ -36,7 +36,7 @@ class JobListingScreen extends StatelessWidget {
             ),
             Padding(
               padding: EdgeInsets.symmetric(
-                  horizontal: horizontalPadding, vertical: 15.0),
+                  horizontal: horizontalPadding, vertical: 23.0),
               child: Column(
                 children: jobProvider.filteredJobs
                     .map((job) => JobCard(

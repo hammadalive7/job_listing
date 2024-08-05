@@ -43,7 +43,7 @@ class _JobCardChipsState extends State<JobCardChips> {
             backgroundColor:
                 provider.isHovering(uniqueKey) ? primaryColor : secondaryColor,
             shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(8.0),
+              borderRadius: BorderRadius.circular(5.0),
             ),
             side: const BorderSide(
               color: secondaryColor,

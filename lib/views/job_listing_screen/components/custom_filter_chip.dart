@@ -26,7 +26,7 @@ class CustomFilterChip extends StatelessWidget {
           decoration: BoxDecoration(
             color: secondaryColor,
             border: Border.all(color: secondaryColor),
-            borderRadius: BorderRadius.circular(4.0),
+            borderRadius: BorderRadius.circular(5.0),
           ),
           child: Row(
             mainAxisSize: MainAxisSize.min,
@@ -38,7 +38,7 @@ class CustomFilterChip extends StatelessWidget {
                 decoration: const BoxDecoration(
                   color: secondaryColor,
                   borderRadius: BorderRadius.horizontal(
-                    left: Radius.circular(4.0),
+                    left: Radius.circular(5.0),
                   ),
                 ),
                 child: Text(
@@ -59,7 +59,7 @@ class CustomFilterChip extends StatelessWidget {
                     decoration: BoxDecoration(
                       color: isHovering ? Colors.black : secondaryColor,
                       borderRadius: const BorderRadius.horizontal(
-                        right: Radius.circular(4.0),
+                        right: Radius.circular(5.0),
                       ),
                     ),
                     child: SvgPicture.asset(

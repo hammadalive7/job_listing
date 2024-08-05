@@ -5,8 +5,8 @@ import 'package:flutter_listing/model/listing_model.dart';
 class JobProvider with ChangeNotifier {
   final List<Jobs> _jobs =
       data.map((jobData) => Jobs.fromJson(jobData)).toList();
+
   final List<String> _selectedFilters = [];
-  final Map<String, bool> hovering = {};
 
   List<Jobs> get jobs => _jobs;
 

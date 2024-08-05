@@ -11,7 +11,7 @@ class CustomHeader extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       color: primaryColor,
-      height: isMobile ? 200.0 : 300.0,
+      height: 150.0,
       width: double.infinity,
       child: SvgPicture.asset(
         isMobile

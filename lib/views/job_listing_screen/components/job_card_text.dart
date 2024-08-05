@@ -19,31 +19,31 @@ class JobCardText extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             Padding(
-              padding: const EdgeInsets.only(right: 8.0, top: 8.0),
+              padding: const EdgeInsets.only(right: 12.0, top: 8.0),
               child: Text(
                 job.company,
                 style: const TextStyle(
                   color: primaryColor,
-                  fontSize: 18.0,
+                  fontSize: 16.0,
                   fontWeight: FontWeight.bold,
                 ),
               ),
             ),
             if (job.isNew)
               Padding(
-                padding: const EdgeInsets.only(left: 8.0, top: 8.0),
+                padding: const EdgeInsets.only(top: 8.0, right: 10.0),
                 child: Container(
                   padding: const EdgeInsets.symmetric(
                       horizontal: 8.0, vertical: 4.0),
                   decoration: BoxDecoration(
                     color: primaryColor,
-                    borderRadius: BorderRadius.circular(20.0),
+                    borderRadius: BorderRadius.circular(12.0),
                   ),
                   child: const Text(
                     newJob,
                     style: TextStyle(
                       color: Colors.white,
-                      fontSize: 10.0,
+                      fontSize: 12.0,
                       fontWeight: FontWeight.bold,
                     ),
                   ),
@@ -51,19 +51,19 @@ class JobCardText extends StatelessWidget {
               ),
             if (job.isFeatured)
               Padding(
-                padding: const EdgeInsets.only(left: 8.0, top: 8.0),
+                padding: const EdgeInsets.only(top: 8.0, right: 10.0),
                 child: Container(
                   padding: const EdgeInsets.symmetric(
                       horizontal: 8.0, vertical: 4.0),
                   decoration: BoxDecoration(
-                    color: Colors.black87,
-                    borderRadius: BorderRadius.circular(20.0),
+                    color: featuredColor,
+                    borderRadius: BorderRadius.circular(12.0),
                   ),
                   child: const Text(
                     featuredJob,
                     style: TextStyle(
                       color: Colors.white,
-                      fontSize: 10.0,
+                      fontSize: 12.0,
                       fontWeight: FontWeight.bold,
                     ),
                   ),
@@ -90,14 +90,55 @@ class JobCardText extends StatelessWidget {
           );
         }),
         const SizedBox(height: 8.0),
-        Text(
-          '${job.postedAt} • ${job.contract} • ${job.location}',
-          style: const TextStyle(
-            color: Colors.grey,
-            fontSize: 14.0,
-            fontWeight: FontWeight.bold,
-          ),
-        ),
+        Row(
+          children: [
+            Text(
+              job.postedAt,
+              style: const TextStyle(
+                color: jobDetailColor,
+                fontSize: 14.0,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+            const SizedBox(width: 8.0), // Spacing before the dot
+
+            const Text(
+              '•',
+              style: TextStyle(
+                color: Color(0xFFB9BFBF),
+                fontSize: 14.0,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+            const SizedBox(width: 8.0), // Spacing after the dot
+            Text(
+              job.contract,
+              style: const TextStyle(
+                color: jobDetailColor,
+                fontSize: 14.0,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+            const SizedBox(width: 8.0), // Spacing before the dot
+            const Text(
+              '•',
+              style: TextStyle(
+                color: Color(0xFFB9BFBF),
+                fontSize: 14.0,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+            const SizedBox(width: 8.0), // Spacing after the dot
+            Text(
+              job.location,
+              style: const TextStyle(
+                color: jobDetailColor,
+                fontSize: 14.0,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+          ],
+        )
       ],
     );
   }
