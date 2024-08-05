@@ -4,9 +4,9 @@ A new Flutter project.
 
 Mobile App UI:
 
-<img width="400" height="800" alt="Job Listing Desktp" src="https://github.com/user-attachments/assets/347c89db-95e0-488e-a266-b83896800b50">
+<img width="400" height="700" alt="Job Listing Desktp" src="https://github.com/user-attachments/assets/9a5acc20-05e0-46f4-be2a-51726f204c5e">
 
 
 Desktop UI:
 
-<img width="1440" alt="Job Listing Desktp" src="https://github.com/user-attachments/assets/7d2b431c-115f-4dc5-aa61-6bef4cc8c8c6">
+<img width="1312" alt="Job Listing Desktp" src="https://github.com/user-attachments/assets/13b9841d-8377-48df-98b7-8ae768645933">
